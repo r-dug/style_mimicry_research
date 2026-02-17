@@ -120,6 +120,7 @@ def run_anti_dreambooth(
         "python3",
         "-m",
         "accelerate.commands.launch",
+        "--num_processes", "1",
         "attacks/aspl.py",
         "--pretrained_model_name_or_path",
         resolved_model_path,

@@ -126,6 +126,7 @@ def run_mist(
         "python3",
         "-m",
         "accelerate.commands.launch",
+        "--num_processes", "1",
         "attacks/mist.py",
         "--mode",
         args.mode,
@@ -174,6 +175,7 @@ def save_with_source_suffix(source_noise: Path, destination: Path) -> None:
     """Save generated perturbation using destination filename extension."""
     destination.parent.mkdir(parents=True, exist_ok=True)
     with Image.open(source_noise) as image:
+        image.load()  # force full read to catch corrupt files early
         ext = destination.suffix.lower()
         if ext in {".jpg", ".jpeg"}:
             image.convert("RGB").save(destination, format="JPEG", quality=95)

@@ -15,13 +15,14 @@ _MIMICRY_DIR = _PROJECT_ROOT / "mimicry"
 if str(_MIMICRY_DIR) not in sys.path:
     sys.path.insert(0, str(_MIMICRY_DIR))
 
-from common.constants import IMAGE_EXTENSIONS, DEFAULT_CLASS_DATA_DIR  # noqa: E402
+from common.constants import DATA_ROOT_DEFAULT, IMAGE_EXTENSIONS, DEFAULT_CLASS_DATA_DIR  # noqa: E402
 from common.model_resolution import (  # noqa: E402
     add_model_args,
     ensure_runtime_dependencies,
     resolve_model_source,
 )
 from common.noise_ckpt_output import normalize_noise_ckpt_outputs  # noqa: E402
+from common.style_centroids import load_centroids, find_most_dissimilar  # noqa: E402
 
 IMAGE_EXTENSIONS_SET = set(IMAGE_EXTENSIONS)
 LOG_PREFIX = "style_guard"
@@ -79,7 +80,19 @@ def parse_args() -> argparse.Namespace:
         "--target-image-dir",
         type=Path,
         default=None,
-        help="Style reference image directory. Required when --style-loss-weight > 0.",
+        help="Style reference image directory. Overrides auto-selection when provided.",
+    )
+    parser.add_argument(
+        "--auto-select-target",
+        action="store_true",
+        default=False,
+        help="Automatically select the most dissimilar artist as style target.",
+    )
+    parser.add_argument(
+        "--centroids-file",
+        type=Path,
+        default=DATA_ROOT_DEFAULT / "style_centroids.json",
+        help="Pre-computed style centroids JSON (from precompute_centroids.py).",
     )
 
     # Prior preservation
@@ -134,6 +147,7 @@ def run_style_guard(
         "python3",
         "-m",
         "accelerate.commands.launch",
+        "--num_processes", "1",
         "attacks/styleguard.py",
         "--pretrained_model_name_or_path",
         resolved_model_path,
@@ -270,10 +284,35 @@ def main() -> int:
         print(f"[{LOG_PREFIX}] {error}")
         return 2
 
-    # Validate style loss args
+    # Auto-select target artist when style loss is enabled
     if args.style_loss_weight > 0 and args.target_image_dir is None:
-        print(f"[{LOG_PREFIX}] --target-image-dir is required when --style-loss-weight > 0")
-        return 2
+        if not args.auto_select_target:
+            print(f"[{LOG_PREFIX}] --target-image-dir or --auto-select-target is required when --style-loss-weight > 0")
+            return 2
+        if not args.centroids_file.exists():
+            print(
+                f"[{LOG_PREFIX}] centroids file not found: {args.centroids_file}\n"
+                f"  Run precompute_centroids.py first, or provide --target-image-dir manually."
+            )
+            return 2
+        try:
+            centroids, _ = load_centroids(args.centroids_file)
+        except (OSError, ValueError, KeyError) as error:
+            print(f"[{LOG_PREFIX}] failed to load centroids: {error}")
+            return 2
+        # Identify source artist from input directory name
+        source_name = (input_target if mode == "dir" else input_target.parent).name
+        source_centroid = None
+        for c in centroids:
+            if c.artist == source_name:
+                source_centroid = c
+                break
+        if source_centroid is None:
+            print(f"[{LOG_PREFIX}] artist '{source_name}' not found in centroids file")
+            return 2
+        target = find_most_dissimilar(source_centroid, centroids)
+        args.target_image_dir = _PROJECT_ROOT / target.image_dir
+        print(f"[{LOG_PREFIX}] auto-selected target: {target.artist} ({target.style}) -> {args.target_image_dir}")
 
     try:
         resolved_model_path = resolve_model_source(args=args, log_prefix=LOG_PREFIX)
