@@ -32,7 +32,8 @@ from common.progress_tracker import ProgressTracker  # noqa: E402
 
 
 WIKIART_URL_PREFIX = "https://www.wikiart.org/en/"
-WIKIART_URL_SUFFIX = "/all-works#!#filterName:all-paintings-chronologically,resultType:masonry"
+WIKIART_URL_SUFFIX = "/all-works#!#filterName:Style_"
+WIKIART_URL_SUFFIX_2 = ",resultType:masonry"
 MASONRY_SELECTOR = "div.masonry-content"
 LOAD_MORE_SELECTOR = (
     "body > div.wiki-container > div.wiki-container-responsive.with-overflow > "
@@ -60,7 +61,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--max-load-more-clicks",
         type=int,
-        default=1,
+        default=2,
         help="Maximum Load More clicks per artist page",
     )
     parser.add_argument(
@@ -78,7 +79,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--sleep-seconds",
         type=float,
-        default=1.5,
+        default=.5,
         help="Delay between browser actions to stabilize lazy loading",
     )
     parser.add_argument(
@@ -158,9 +159,9 @@ def remove_near_duplicate_filenames(directory: Path) -> int:
     return removed
 
 
-def build_artist_search_url(artist_slug: str) -> str:
+def build_artist_search_url(artist_slug: str, style: str) -> str:
     """Build the WikiArt search URL for one artist slug."""
-    return f"{WIKIART_URL_PREFIX}{quote_plus(artist_slug)}{WIKIART_URL_SUFFIX}"
+    return f"{WIKIART_URL_PREFIX}{quote_plus(artist_slug)}{WIKIART_URL_SUFFIX}{quote_plus(style)}{WIKIART_URL_SUFFIX_2}"
 
 
 def new_driver() -> webdriver.Chrome:
@@ -177,6 +178,7 @@ def new_driver() -> webdriver.Chrome:
 def collect_image_candidates(
     driver: webdriver.Chrome,
     artist_slug: str,
+    art_style: str,
     target_count: int,
     max_load_more_clicks: int,
     max_scrolls: int,
@@ -184,7 +186,7 @@ def collect_image_candidates(
 ) -> list[tuple[str, str]]:
     """Collect candidate (url, alt) image tuples from WikiArt masonry content."""
     
-    search_url = build_artist_search_url(artist_slug=artist_slug)
+    search_url = build_artist_search_url(artist_slug=artist_slug, style=art_style)
     if By is None:
         raise ModuleNotFoundError("selenium is required for non-dry-run scraping.")
     driver.get(search_url)
@@ -350,6 +352,7 @@ def main() -> int:
                 candidates = collect_image_candidates(
                     driver=driver,
                     artist_slug=artist_slug,
+                    art_style=style_name,
                     target_count=args.target_count,
                     max_load_more_clicks=args.max_load_more_clicks,
                     max_scrolls=args.max_scrolls,

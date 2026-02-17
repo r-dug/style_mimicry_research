@@ -4,186 +4,188 @@
       "abstract/Georgia_OKeeffe": {
         "artist": "Georgia_OKeeffe",
         "image_count": 20,
-        "status": "already_complete",
+        "saved_this_run": 1,
+        "status": "complete",
         "style": "abstract",
-        "updated_at": "2026-02-16T08:05:25+00:00"
+        "target_count": 20,
+        "updated_at": "2026-02-17T02:28:22+00:00"
       },
       "abstract/Kazimir_Malevich": {
         "artist": "Kazimir_Malevich",
         "image_count": 20,
         "status": "already_complete",
         "style": "abstract",
-        "updated_at": "2026-02-16T08:05:25+00:00"
+        "updated_at": "2026-02-17T02:28:22+00:00"
       },
       "abstract/Piet_Mondrian": {
         "artist": "Piet_Mondrian",
         "image_count": 20,
         "status": "already_complete",
         "style": "abstract",
-        "updated_at": "2026-02-16T08:05:25+00:00"
+        "updated_at": "2026-02-17T02:28:22+00:00"
       },
       "abstract/Wassily_Kandinsky": {
         "artist": "Wassily_Kandinsky",
         "image_count": 20,
         "status": "already_complete",
         "style": "abstract",
-        "updated_at": "2026-02-16T08:05:25+00:00"
+        "updated_at": "2026-02-17T02:28:22+00:00"
       },
       "baroque/Caravaggio": {
         "artist": "Caravaggio",
         "image_count": 20,
         "status": "already_complete",
         "style": "baroque",
-        "updated_at": "2026-02-16T08:05:25+00:00"
+        "updated_at": "2026-02-17T02:28:22+00:00"
       },
       "baroque/Diego_Velazquez": {
         "artist": "Diego_Velazquez",
         "image_count": 20,
         "status": "already_complete",
         "style": "baroque",
-        "updated_at": "2026-02-16T08:05:25+00:00"
+        "updated_at": "2026-02-17T02:28:22+00:00"
       },
       "baroque/Peter_Paul_Rubens": {
         "artist": "Peter_Paul_Rubens",
         "image_count": 20,
         "status": "already_complete",
         "style": "baroque",
-        "updated_at": "2026-02-16T08:05:25+00:00"
+        "updated_at": "2026-02-17T02:28:22+00:00"
       },
       "baroque/Rembrandt": {
         "artist": "Rembrandt",
         "image_count": 20,
         "status": "already_complete",
         "style": "baroque",
-        "updated_at": "2026-02-16T08:05:25+00:00"
+        "updated_at": "2026-02-17T02:28:22+00:00"
       },
       "cubism/Fernand_Leger": {
         "artist": "Fernand_Leger",
         "image_count": 20,
         "status": "already_complete",
         "style": "cubism",
-        "updated_at": "2026-02-16T08:05:25+00:00"
+        "updated_at": "2026-02-17T02:28:22+00:00"
       },
       "cubism/Georges_Braque": {
         "artist": "Georges_Braque",
         "image_count": 20,
         "status": "already_complete",
         "style": "cubism",
-        "updated_at": "2026-02-16T08:05:25+00:00"
+        "updated_at": "2026-02-17T02:28:22+00:00"
       },
       "cubism/Juan_Gris": {
         "artist": "Juan_Gris",
         "image_count": 20,
         "status": "already_complete",
         "style": "cubism",
-        "updated_at": "2026-02-16T08:05:25+00:00"
+        "updated_at": "2026-02-17T02:28:22+00:00"
       },
       "cubism/Pablo_Picasso": {
         "artist": "Pablo_Picasso",
         "image_count": 20,
         "status": "already_complete",
         "style": "cubism",
-        "updated_at": "2026-02-16T08:05:25+00:00"
+        "updated_at": "2026-02-17T02:28:22+00:00"
       },
       "cubism/Robert_Delaunay": {
         "artist": "Robert_Delaunay",
         "image_count": 20,
         "status": "already_complete",
         "style": "cubism",
-        "updated_at": "2026-02-16T08:05:25+00:00"
+        "updated_at": "2026-02-17T02:28:22+00:00"
       },
       "impressionism/Berthe_Morisot": {
         "artist": "Berthe_Morisot",
         "image_count": 20,
         "status": "already_complete",
         "style": "impressionism",
-        "updated_at": "2026-02-16T08:05:25+00:00"
+        "updated_at": "2026-02-17T02:28:22+00:00"
       },
       "impressionism/Camille_Pissarro": {
         "artist": "Camille_Pissarro",
         "image_count": 20,
         "status": "already_complete",
         "style": "impressionism",
-        "updated_at": "2026-02-16T08:05:25+00:00"
+        "updated_at": "2026-02-17T02:28:22+00:00"
       },
       "impressionism/Claude_Monet": {
         "artist": "Claude_Monet",
         "image_count": 20,
         "status": "already_complete",
         "style": "impressionism",
-        "updated_at": "2026-02-16T08:05:25+00:00"
+        "updated_at": "2026-02-17T02:28:22+00:00"
       },
       "impressionism/Edgar_Degas": {
         "artist": "Edgar_Degas",
         "image_count": 20,
         "status": "already_complete",
         "style": "impressionism",
-        "updated_at": "2026-02-16T08:05:25+00:00"
+        "updated_at": "2026-02-17T02:28:22+00:00"
       },
       "impressionism/Pierre_Auguste_Renoir": {
         "artist": "Pierre_Auguste_Renoir",
         "image_count": 20,
         "status": "already_complete",
         "style": "impressionism",
-        "updated_at": "2026-02-16T08:05:25+00:00"
+        "updated_at": "2026-02-17T02:28:22+00:00"
       },
       "realism/Gustave_Courbet": {
         "artist": "Gustave_Courbet",
         "image_count": 20,
         "status": "already_complete",
         "style": "realism",
-        "updated_at": "2026-02-16T08:05:25+00:00"
+        "updated_at": "2026-02-17T02:28:22+00:00"
       },
       "realism/Honore_Daumier": {
         "artist": "Honore_Daumier",
         "image_count": 20,
         "status": "already_complete",
         "style": "realism",
-        "updated_at": "2026-02-16T08:05:25+00:00"
+        "updated_at": "2026-02-17T02:28:22+00:00"
       },
       "realism/Jean_Francois_Millet": {
         "artist": "Jean_Francois_Millet",
         "image_count": 20,
         "status": "already_complete",
         "style": "realism",
-        "updated_at": "2026-02-16T08:05:25+00:00"
+        "updated_at": "2026-02-17T02:28:22+00:00"
       },
       "surrealism/Frida_Kahlo": {
         "artist": "Frida_Kahlo",
         "image_count": 20,
         "status": "already_complete",
         "style": "surrealism",
-        "updated_at": "2026-02-16T08:05:25+00:00"
+        "updated_at": "2026-02-17T02:28:22+00:00"
       },
       "surrealism/Joan_Miro": {
         "artist": "Joan_Miro",
         "image_count": 20,
         "status": "already_complete",
         "style": "surrealism",
-        "updated_at": "2026-02-16T08:05:25+00:00"
+        "updated_at": "2026-02-17T02:28:22+00:00"
       },
       "surrealism/Max_Ernst": {
         "artist": "Max_Ernst",
         "image_count": 20,
         "status": "already_complete",
         "style": "surrealism",
-        "updated_at": "2026-02-16T08:05:25+00:00"
+        "updated_at": "2026-02-17T02:28:22+00:00"
       },
       "surrealism/Rene_Magritte": {
         "artist": "Rene_Magritte",
-        "image_count": 18,
-        "saved_this_run": 0,
-        "status": "incomplete",
+        "image_count": 20,
+        "saved_this_run": 2,
+        "status": "complete",
         "style": "surrealism",
         "target_count": 20,
-        "updated_at": "2026-02-16T08:06:10+00:00"
+        "updated_at": "2026-02-17T02:29:03+00:00"
       },
       "surrealism/Salvador_Dali": {
         "artist": "Salvador_Dali",
         "image_count": 20,
         "status": "already_complete",
         "style": "surrealism",
-        "updated_at": "2026-02-16T08:06:10+00:00"
+        "updated_at": "2026-02-17T02:29:03+00:00"
       }
     },
     "step_2_apply_protections": {
@@ -534,32 +536,19 @@
   },
   "metadata": {
     "created_at": "2026-02-16T07:00:12+00:00",
-    "data_root": "data/style_mimicry",
-    "last_updated_at": "2026-02-17T01:23:03+00:00",
+    "data_root": ".",
+    "last_updated_at": "2026-02-17T02:29:03+00:00",
     "min_samples_per_artist": 20
   },
   "snapshot": {
-    "captured_at": "2026-02-17T01:23:03+00:00",
+    "captured_at": "2026-02-17T02:29:03+00:00",
     "mimic_art": {
-      "base_dir": "data/style_mimicry/mimic_art",
+      "base_dir": "mimic_art",
       "image_count": 0
     },
     "original_art": {
-      "artists_below_threshold": [
-        {
-          "artist": "Georgia_OKeeffe",
-          "count": 19,
-          "split": "historical",
-          "style": "abstract"
-        },
-        {
-          "artist": "Rene_Magritte",
-          "count": 18,
-          "split": "historical",
-          "style": "surrealism"
-        }
-      ],
-      "base_dir": "data/style_mimicry/original_art",
+      "artists_below_threshold": [],
+      "base_dir": "original_art",
       "min_samples_per_artist": 20,
       "splits": {
         "contemporary": {
@@ -597,19 +586,19 @@
         },
         "historical": {
           "artist_count": 26,
-          "artists_below_threshold": 2,
-          "image_count": 517,
+          "artists_below_threshold": 0,
+          "image_count": 520,
           "style_count": 6,
           "styles": {
             "abstract": {
               "artist_count": 4,
               "artists": {
-                "Georgia_OKeeffe": 19,
+                "Georgia_OKeeffe": 20,
                 "Kazimir_Malevich": 20,
                 "Piet_Mondrian": 20,
                 "Wassily_Kandinsky": 20
               },
-              "image_count": 79
+              "image_count": 80
             },
             "baroque": {
               "artist_count": 4,
@@ -658,23 +647,23 @@
                 "Frida_Kahlo": 20,
                 "Joan_Miro": 20,
                 "Max_Ernst": 20,
-                "Rene_Magritte": 18,
+                "Rene_Magritte": 20,
                 "Salvador_Dali": 20
               },
-              "image_count": 98
+              "image_count": 100
             }
           }
         }
       },
       "totals": {
         "artists": 26,
-        "artists_below_threshold": 2,
-        "images": 517,
+        "artists_below_threshold": 0,
+        "images": 520,
         "styles": 11
       }
     },
     "protected_art": {
-      "base_dir": "data/style_mimicry/protected_art",
+      "base_dir": "protected_art",
       "methods": {
         "anti_dreambooth": {
           "exists": true,
@@ -715,7 +704,7 @@
       }
     },
     "robust_samples": {
-      "base_dir": "data/style_mimicry/robust_samples",
+      "base_dir": "robust_samples",
       "methods": {
         "diff_pure": {
           "exists": true,
@@ -757,7 +746,7 @@
     }
   },
   "step_status": {
-    "step_1_collect_original_art": "in_progress",
+    "step_1_collect_original_art": "complete",
     "step_2_apply_protections": "not_started",
     "step_3_fine_tune_sd35": "not_started",
     "step_4_generate_mimic_art": "not_started",
