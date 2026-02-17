@@ -1,0 +1,5 @@
+{
+  "description": "Example command template for GLAZE wrapper execution.",
+  "command_template": "python3 mimicry/protections/glaze/local_glaze_wrapper.py --input {input} --output {output}"
+}
+

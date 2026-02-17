@@ -1,0 +1,4 @@
+{
+  "description": "Example command template for Mist batch-by-artist wrapper execution.",
+  "command_template": "python3 mimicry/protections/mist/local_mist_wrapper.py --input-dir {input_dir} --output-dir {output_dir} --mist-root mimicry/protections/tools/mist --device gpu --mode lunet --pretrained-model-name-or-path runwayml/stable-diffusion-v1-5 --model-cache-dir data/style_mimicry/models --auto-download-model --hf-enable-transfer --hf-max-workers 16 --instance-prompt \"a painting, high quality, masterpiece\" --class-prompt \"a painting, high quality, masterpiece\" --mixed-precision bf16 --max-train-steps 1 --max-f-train-steps 2 --max-adv-train-steps 5 --checkpointing-iterations 1 --prior-loss-weight 0.1 --pgd-alpha 0.005 --pgd-eps 0.04 --resolution 512 --resize --low-vram-mode"
+}

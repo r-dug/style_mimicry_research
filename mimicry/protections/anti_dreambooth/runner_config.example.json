@@ -1,0 +1,5 @@
+{
+  "description": "Example command template for Anti-DreamBooth wrapper execution.",
+  "command_template": "python3 mimicry/protections/anti_dreambooth/local_anti_dreambooth_wrapper.py --input {input} --output {output}"
+}
+

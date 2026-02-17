@@ -1,0 +1,5 @@
+{
+  "description": "Example command template for StyleGuard wrapper execution.",
+  "command_template": "python3 mimicry/protections/style_guard/local_style_guard_wrapper.py --input {input} --output {output}"
+}
+

@@ -1,0 +1,105 @@
+# ── Python ──────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+.Python
+**/__pycache__/
+**/*.py[cod]
+**/*.pyc
+**/*egg-info/
+
+
+# ── Virtual environments ───────────────────────────────
+venv/
+.venv/
+env/
+**/venv/
+**/.venv/
+**/env/
+
+# ── Testing / linting ─────────────────────────────────
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+**/.pytest_cache/
+**/.mypy_cache/
+**/.coverage
+**/htmlcov/
+
+# ── IDE / editor ──────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*~
+**/.vscode/
+**/.idea/
+**/*.swp
+**/*~
+
+# ── OS ────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── Secrets & credentials ────────────────────────────
+data/style_mimicry/secrets/
+.env
+.env.*
+token.txt
+**/secrets/
+**/.env
+**/token.txt
+
+# ── Data: ignore heavy files, keep directory structure ─
+data/**/*.jpg
+data/**/*.jpeg
+data/**/*.png
+data/**/*.webp
+data/**/*.bmp
+data/**/*.tif
+data/**/*.tiff
+data/**/*.gif
+data/**/*.incompletehe 
+
+# ── Data: HuggingFace model cache blobs & refs ────────
+data/style_mimicry/models/models--*/blobs/
+data/style_mimicry/models/models--*/refs/
+data/style_mimicry/models/models--*/snapshots/
+
+# ── External tools imported from github ───────────────
+mimicry/benchmarking/tools/*
+mimicry/countermeasures/tools/*
+mimicry/protections/tools/*
+mimicry/tuning/tools/*
+
+# ── Model weights / checkpoints ──────────────────────
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.bin
+*.pkl
+*.pickle
+*.h5
+*.onnx
+
+# ── Logs / outputs ───────────────────────────────────
+logs/
+*.log
+
+# ── Jupyter ──────────────────────────────────────────
+.ipynb_checkpoints/
+
+# ── Archives ─────────────────────────────────────────
+*.zip
+*.tar.gz
+*.tar.bz2
+
+# ── Embedded tool repos (vendored .git histories) ───
+mimicry/protections/tools/mist/.git
+mimicry/protections/tools/style_guard/.git
+mimicry/protections/tools/anti_dreambooth/.git
