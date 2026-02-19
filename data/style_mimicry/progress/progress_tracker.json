@@ -536,19 +536,19 @@
   },
   "metadata": {
     "created_at": "2026-02-16T07:00:12+00:00",
-    "data_root": ".",
-    "last_updated_at": "2026-02-17T02:29:03+00:00",
+    "data_root": "data/style_mimicry",
+    "last_updated_at": "2026-02-17T17:39:02+00:00",
     "min_samples_per_artist": 20
   },
   "snapshot": {
-    "captured_at": "2026-02-17T02:29:03+00:00",
+    "captured_at": "2026-02-17T17:39:02+00:00",
     "mimic_art": {
-      "base_dir": "mimic_art",
+      "base_dir": "data/style_mimicry/mimic_art",
       "image_count": 0
     },
     "original_art": {
       "artists_below_threshold": [],
-      "base_dir": "original_art",
+      "base_dir": "data/style_mimicry/original_art",
       "min_samples_per_artist": 20,
       "splits": {
         "contemporary": {
@@ -663,7 +663,7 @@
       }
     },
     "protected_art": {
-      "base_dir": "protected_art",
+      "base_dir": "data/style_mimicry/protected_art",
       "methods": {
         "anti_dreambooth": {
           "exists": true,
@@ -704,7 +704,7 @@
       }
     },
     "robust_samples": {
-      "base_dir": "robust_samples",
+      "base_dir": "data/style_mimicry/robust_samples",
       "methods": {
         "diff_pure": {
           "exists": true,

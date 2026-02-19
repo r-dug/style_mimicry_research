@@ -20,6 +20,9 @@ ROBUST_METHODS: tuple[str, ...] = (
     "noisy_upscaling",
     "impress",
 )
+DEFAULT_SD35_MODEL: str = "stabilityai/stable-diffusion-3.5-large"
+TUNING_STACKS: tuple[str, ...] = ("hf_diffusers", "simpletuner")
+DEFAULT_LORA_OUTPUT_DIR: Path = Path("data/style_mimicry/models/lora")
 IMAGE_EXTENSIONS: tuple[str, ...] = (".jpg", ".jpeg", ".png", ".webp", ".bmp", ".tif", ".tiff")
 PIPELINE_STEPS: tuple[str, ...] = (
     "step_1_collect_original_art",

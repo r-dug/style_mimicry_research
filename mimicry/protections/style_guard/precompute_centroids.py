@@ -13,9 +13,9 @@ import argparse
 import sys
 from pathlib import Path
 
+import numpy as np
 import torch
 from PIL import Image
-from torchvision import transforms
 
 _PROJECT_ROOT = Path(__file__).resolve().parents[3]
 _MIMICRY_DIR = _PROJECT_ROOT / "mimicry"
@@ -87,21 +87,40 @@ def discover_artists(art_root: Path) -> list[tuple[str, str, str, Path]]:
     return artists
 
 
-def build_transforms(resolution: int) -> transforms.Compose:
-    """Build the same image transforms that styleguard.py uses."""
-    return transforms.Compose([
-        transforms.Resize(resolution, interpolation=transforms.InterpolationMode.BILINEAR),
-        transforms.CenterCrop(resolution),
-        transforms.ToTensor(),
-        transforms.Normalize([0.5], [0.5]),
-    ])
+def load_and_preprocess(path: Path, resolution: int) -> torch.Tensor:
+    """Load, resize, center-crop, and normalize an image to [-1, 1].
+
+    Replicates the torchvision transform chain used by styleguard.py
+    (Resize -> CenterCrop -> ToTensor -> Normalize([0.5],[0.5])) using
+    only PIL and torch, avoiding the torchvision import that can trigger
+    libstdc++ issues via torch._dynamo/optree.
+    """
+    img = Image.open(path).convert("RGB")
+    # Resize shortest side to resolution (bilinear), matching transforms.Resize
+    w, h = img.size
+    if h < w:
+        new_h = resolution
+        new_w = int(round(w * resolution / h))
+    else:
+        new_w = resolution
+        new_h = int(round(h * resolution / w))
+    img = img.resize((new_w, new_h), Image.BILINEAR)
+    # Center crop to resolution x resolution
+    left = (new_w - resolution) // 2
+    top = (new_h - resolution) // 2
+    img = img.crop((left, top, left + resolution, top + resolution))
+    # ToTensor equivalent: HWC uint8 [0,255] -> CHW float [0,1]
+    tensor = torch.from_numpy(np.array(img)).permute(2, 0, 1).float() / 255.0
+    # Normalize([0.5],[0.5]) -> maps [0,1] to [-1,1]
+    tensor = tensor * 2.0 - 1.0
+    return tensor
 
 
 @torch.no_grad()
 def compute_centroid(
     image_paths: list[Path],
     vae,
-    image_transforms: transforms.Compose,
+    resolution: int,
     batch_size: int,
     device: torch.device,
     dtype: torch.dtype,
@@ -113,7 +132,7 @@ def compute_centroid(
     for i in range(0, len(image_paths), batch_size):
         batch_paths = image_paths[i : i + batch_size]
         images = torch.stack([
-            image_transforms(Image.open(p).convert("RGB")) for p in batch_paths
+            load_and_preprocess(p, resolution) for p in batch_paths
         ])
         latents = vae.encode(images.to(device, dtype=dtype)).latent_dist.sample()
         latents = latents * vae.config.scaling_factor
@@ -130,6 +149,7 @@ def compute_centroid(
 def main() -> int:
     args = parse_args()
 
+    args.art_root = args.art_root.resolve()
     if not args.art_root.exists():
         print(f"[{LOG_PREFIX}] art root not found: {args.art_root}")
         return 2
@@ -155,7 +175,6 @@ def main() -> int:
     vae.to(device, dtype=dtype)
     vae.eval()
 
-    image_transforms = build_transforms(args.resolution)
     centroids: list[ArtistCentroid] = []
 
     for idx, (category, style, artist, artist_dir) in enumerate(artists, 1):
@@ -164,7 +183,7 @@ def main() -> int:
         mean, var = compute_centroid(
             image_paths=images,
             vae=vae,
-            image_transforms=image_transforms,
+            resolution=args.resolution,
             batch_size=args.batch_size,
             device=device,
             dtype=dtype,
