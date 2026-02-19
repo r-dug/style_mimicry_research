@@ -1,0 +1,4 @@
+{
+  "description": "DreamBooth LoRA fine-tuning on SD3.5 Large via HuggingFace diffusers.",
+  "command_template": "python3 mimicry/tuning/hf_diffusers/local_dreambooth_lora_sd3_wrapper.py --input-dir {input_dir} --output-dir {output_dir}"
+}
